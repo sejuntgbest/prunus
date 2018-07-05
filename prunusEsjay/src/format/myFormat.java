@@ -1,4 +1,5 @@
-
+package format;
+import format.myFormat;
 public class myFormat {
 
 		public String Test(){

@@ -11,7 +11,7 @@ public class HelloWorld {
 		 */		
 		myFormat CHECKS = new myFormat();
 		Scanner sc = new Scanner(System.in);
-		System.out.println("숫자를 입력하세요.");
+		System.out.println("키를 입력하세요.");
 		System.out.println("1: 더치페이 계산기 , 2: 3: 4: 5:");
 		int code = sc.nextInt();
 		String stringValue = CHECKS.stringFormatTest(code);		

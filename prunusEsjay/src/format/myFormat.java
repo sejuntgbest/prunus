@@ -2,6 +2,9 @@ package format;
 import javax.xml.transform.Result;
 
 import format.myFormat;
+import format.plumCalendar;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class myFormat {
@@ -9,37 +12,65 @@ public class myFormat {
 	public String stringFormatTest(int intValue){
 		String returnString = "";
 		Scanner sc = new Scanner(System.in);
+		plumCalendar cal = new plumCalendar();
 		
 		switch(intValue) {
 			case 1 :
-				returnString = "1번 선택하셨습니다.";
-				System.out.println("더치페이) 총 금액을 입력 해 주세요.");
+				System.out.println("더치페이) 총 금액을 입력 해 주세요. \n");
 				float amount = sc.nextFloat();
-				System.out.println("더치페이) 몇 명인가요?");
+				System.out.println("더치페이) 몇 명인가요?  \n");
 				int ppl = sc.nextInt();
 				float douch = douchPayValue(amount,ppl);
-				System.out.println("1명당 "+douch + "원 결제 하시면 됩니다.");
+				//round value
+				douch = roundMath(douch);
+				System.out.println("1명당 "+douch + "원 결제 하시면 됩니다.  \n");
+				returnString = "1번 선택하셨습니다. \n";
 				break;
 			case 2 :
-				returnString = "2번 선택하셨습니다.";
+				System.out.println("시간구하기) 현재 시각을 가져옵니다. \n");
+				System.out.println("현재 시각.. "+ cal.getToday());
+				System.out.println("시스템의 밀리초 구하기. "+ cal.getMiliSeconds()+"\n");
+				System.out.println("경과시간(초) 구하기. "+ cal.getAfterMiliSeconds(cal.getMiliSeconds())+"\n");
+				returnString = "2번 선택하셨습니다. \n";
 				break;
 			case 3 :
-				returnString = "3번 선택하셨습니다.";
+				returnString = "3번 선택하셨습니다. \n";
 				break;
 			case 4 :
-				returnString = "4번 선택하셨습니다.";
+				returnString = "4번 선택하셨습니다. \n";
 				break;
+			case 0 :
+			case 5 :
+			case 6 :
+			case 7 :
+			case 8 :
+			case 9 :
+				returnString = "";
 			default :
-				returnString = "기본값 선택하셨습니다.";
+				returnString = "";
 				break;
 		}
 		return returnString;
 	}
 	
-	/*
+	/**
 	 *  더치페이하기.
+	 *  @author SJ
+	 *  @param amount , ppl
+	 *  @return 1인당 내야 할 금액
 	 */
 	public float douchPayValue(float amount, int ppl) {
 		return  amount / (float) ppl;
 	}
+	
+	/**
+	 * 반올림합니다.
+	 * @author SJ
+	 * @param rndValue
+	 * @return 반올림하기
+	 */
+	public float roundMath(float rndValue) {
+		return Math.round(rndValue);
+	}
+	
 }

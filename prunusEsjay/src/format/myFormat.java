@@ -3,6 +3,7 @@ import javax.xml.transform.Result;
 
 import format.myFormat;
 import format.plumCalendar;
+import format.plumFormat;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -13,6 +14,7 @@ public class myFormat {
 		String returnString = "";
 		Scanner sc = new Scanner(System.in);
 		plumCalendar cal = new plumCalendar();
+		plumFormat format = new plumFormat();
 		
 		switch(intValue) {
 			case 1 :
@@ -20,9 +22,9 @@ public class myFormat {
 				float amount = sc.nextFloat();
 				System.out.println("더치페이) 몇 명인가요?  \n");
 				int ppl = sc.nextInt();
-				float douch = douchPayValue(amount,ppl);
+				float douch = format.douchPayValue(amount,ppl);
 				//round value
-				douch = roundMath(douch);
+				douch = format.roundMath(douch);
 				System.out.println("1명당 "+douch + "원 결제 하시면 됩니다.  \n");
 				returnString = "1번 선택하셨습니다. \n";
 				break;
@@ -65,24 +67,6 @@ public class myFormat {
 		return returnString;
 	}
 	
-	/**
-	 *  더치페이하기.
-	 *  @author SJ
-	 *  @param amount , ppl
-	 *  @return 1인당 내야 할 금액
-	 */
-	public float douchPayValue(float amount, int ppl) {
-		return  amount / (float) ppl;
-	}
-	
-	/**
-	 * 반올림합니다.
-	 * @author SJ
-	 * @param rndValue
-	 * @return 반올림하기
-	 */
-	public float roundMath(float rndValue) {
-		return Math.round(rndValue);
-	}
+
 	
 }

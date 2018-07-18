@@ -46,11 +46,18 @@ import java.util.TimeZone;
 /* 27. DateCheck 					날짜정합성여부체크		 													@return String Type			@param  Date type		*/
 /****************************************************************************************************************************************************************/
 
+/**
+ * CALENDAR METHODS
+ * @category calendar
+ * @version calendar201807180001
+ * @author SJ
+ *
+ */
 public class plumCalendar {
 
 	/**
 	 * 01. 현재 시각을 가져오기.
-	 * @return Sat Jul 12 16:03:00 GMT+01:00 2000
+	 * @return Date : Sat Jul 12 16:03:00 GMT+01:00 2000
 	 **/
 	
 	public Date getToday() {
@@ -60,22 +67,21 @@ public class plumCalendar {
 
 	/**
 	 * 02. 시스템의 밀리초 구하기.(국제표준시각(UTC, GMT) 1970/1/1/0/0/0 으로부터 경과한 시각)
-	 * @return 1531719629364
+	 * @return long : 밀리초 단위(*1000은 1초), 음수이면 이전 시각
 	 **/
 	
 	public long getMiliSeconds() {
-		// 밀리초 단위(*1000은 1초), 음수이면 이전 시각
 		long time = System.currentTimeMillis();
 		return time;
 	}
 
 	/**
 	 * 03. 경과시간(초) 구하기.(국제표준시각(UTC, GMT) 1970/1/1/0/0/0 으로부터 경과한 시각)
-	 * @return 1531719629364
+	 * @param long time
+	 * @return long : 밀리초 단위(*1000은 1초), 음수이면 이전 시각
 	 **/
 	
 	public long getAfterMiliSeconds(long time) {
-		// 밀리초 단위(*1000은 1초), 음수이면 이전 시각
 		long time1 = time - 10000;//System.currentTimeMillis();
 		long time2 = System.currentTimeMillis();
 		System.out.println("비교하기 TIME 1 : "+time1+"");
@@ -85,7 +91,7 @@ public class plumCalendar {
 	
 	/**
 	 * 04. Date를 Calendar로 맵핑하기
-	 * @return 
+	 * @return void
 	 * */
 	public void returnCalendar() {
 		Date d = new Date ( );
@@ -95,7 +101,7 @@ public class plumCalendar {
 	
 	/**
 	 * 05. 날짜(년/월/일/시/분/초) 구하기
-	 * @return
+	 * @return String : time
 	 */
 	public String simpleFormatDate()
 	{
@@ -108,6 +114,7 @@ public class plumCalendar {
 	
 	/**
 	 * 06. 날짜(년/월/일/시/분/초) 구하기2
+	 * @return void
 	 */
 	public void simpleGregorianFormatDate()
 	{
@@ -129,7 +136,7 @@ public class plumCalendar {
 	
 	/***
 	 * 07. 날짜(년/월/일/시/분/초) 구하기3
-	 * @return
+	 * @return String : 시간 구하기
 	 */
 	public String getDateInstance() {
 		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.KOREA);
@@ -142,8 +149,8 @@ public class plumCalendar {
 	/***
 	 * 08. 표준시간대를 지정하고 날짜를 가져오기
 	 * 결과 : 2000년 8월 5일 16시 16분 47초
-	 * @param String
-	 * @return String
+	 * @param String ㅣ timezone
+	 * @return String : YYYYMMDD
 	 */
 	public String getTimeZone(String zone) {
 		TimeZone jst = TimeZone.getTimeZone (zone);
@@ -156,8 +163,8 @@ public class plumCalendar {
 	/***
 	 * 09. 영어로된 날짜를 숫자로 바꾸기
 	 * 결과 : 2000년 8월 5일 16시 16분 47초
-	 * @param  Date
-	 * @return String
+	 * @param  Date 
+	 * @return String : yyyy-mm-dd
 	 */
 	public String getStdDateToFormattedDate(Date inDate) {
 		
